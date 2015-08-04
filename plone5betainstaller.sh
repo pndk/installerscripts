@@ -22,23 +22,9 @@ tar xfz Plone-5.0b3-UnifiedInstaller.tgz
 cd Plone-5.0b3-UnifiedInstaller
 
 echo "installing (first pass)"
-./install.sh zeo --target=$HOME/workspace &
+./install.sh standalone --target=$HOME/workspace &
 spinner $!
 
-echo "let's install some convenience commands"
-wget https://gist.github.com/pigeonflight/6089807/download -O plonecommands.tgz 
-mkdir -p ~/bin
-tar xfz plonecommands.tgz
-cp `tar tfz plonecommands.tgz |head -1`plone* ~/bin/
-chmod +x ~/bin/plone*
-rm -rf `tar tfz plonecommands.tgz |head -1`
-rm plonecommands.tgz
-echo 'PATH=$PATH:$HOME/bin' >> ~/.bashrc
-echo 'export PATH' >> ~/.bashrc
-PATH=$PATH:$HOME/bin
-export PATH
-parts install tmux
-wget https://gist.githubusercontent.com/pigeonflight/b94d7d078fdc1352b3af/raw/72d3c25af007294cf95c538c15b41c91b44749ed/.codio -O ~/workspace/.codio
 
 echo "***********************************"
 echo "**                               **"
@@ -50,7 +36,7 @@ echo "**  terminal                     **"
 echo "**  in a newly opened terminal   **"
 echo "**  then and run:                **"
 echo "**                               **"
-echo "**     plone-start.sh            **"
-echo "**                               **"
+echo "**     cd zinstance              **"
+echo "**     bin/instance fg           **"
 echo "**                               **"
 echo "***********************************"
