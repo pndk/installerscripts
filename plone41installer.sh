@@ -10,20 +10,14 @@ python_name=Python-2.6.9
 #sudo make install
 #cd ..
 
-sudo apt-get install build-essential
-sudo apt-get install libssl-dev
-sudo apt-get install libxml2-dev
-sudo apt-get install libxslt1-dev
-sudo apt-get install libbz2-dev
-sudo apt-get install zlib1g-dev
-sudo apt-get install python-setuptools
-sudo apt-get install python-dev
-sudo apt-get install libjpeg62-dev
-sudo apt-get install libreadline-gplv2-dev
-sudo apt-get install python-imaging
-sudo apt-get install wv
-sudo apt-get install poppler-utils
+sudo apt-get install build-essential libssl-dev libxml2-dev libxslt1-dev
+sudo apt-get install libbz2-dev install zlib1g-dev python-setuptools python-dev
+sudo apt-get install libjpeg62-dev libreadline-gplv2-dev
+sudo apt-get install python-imaging wv poppler-utils
 # spinner borrowed from http://fitnr.com/showing-a-bash-spinner.html
+# symlink for freetype so pillow compiles
+# see: https://github.com/collective/buildout.python/issues/39
+sudo ln -s /usr/local/include/freetype2 /usr/local/include/freetype
 
 spinner()
 {
