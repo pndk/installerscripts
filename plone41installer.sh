@@ -12,7 +12,7 @@ python_name=Python-2.6.9
 
 sudo apt-get install build-essential libssl-dev libxml2-dev libxslt1-dev
 sudo apt-get install libbz2-dev install zlib1g-dev python-setuptools python-dev
-sudo apt-get install libjpeg62-dev libreadline-gplv2-dev
+sudo apt-get install libjpeg62-dev libreadline-gplv2-dev freetype*
 sudo apt-get install python-imaging wv poppler-utils
 # spinner borrowed from http://fitnr.com/showing-a-bash-spinner.html
 # symlink for freetype so pillow compiles
@@ -45,6 +45,8 @@ sudo apt-get install libssl-dev
 ./install.sh standalone --target=$HOME/workspace --libz=yes  &
 spinner $!
 
+echo "installing (second pass)"
+sed -ie "s###" travis.cfg
 
 echo "***********************************"
 echo "**                               **"
