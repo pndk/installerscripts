@@ -16,10 +16,10 @@ spinner()
 }
 
 echo "getting the installer"
-wget https://launchpad.net/plone/5.0/5.0rc1/+download/Plone-5.0rc1-UnifiedInstaller.tgz
+wget https://launchpad.net/plone/5.0/5.0rc2/+download/Plone-5.0rc2-UnifiedInstaller.tgz
 echo "unpacking the installer"
-tar xfz Plone-5.0rc1-UnifiedInstaller.tgz
-cd Plone-5.0rc1-UnifiedInstaller
+tar xfz Plone-5.0rc2-UnifiedInstaller.tgz
+cd Plone-5.0rc2-UnifiedInstaller
 
 echo "installing (first pass)"
 ./install.sh standalone --target=$HOME/workspace &
