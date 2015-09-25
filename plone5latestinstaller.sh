@@ -1,4 +1,5 @@
 # spinner borrowed from http://fitnr.com/showing-a-bash-spinner.html
+sudo apt-get install libxslt-dev libxml2-dev -y
 
 spinner()
 {
