@@ -1,6 +1,10 @@
 # spinner borrowed from http://fitnr.com/showing-a-bash-spinner.html
 sudo apt-get install libxslt-dev libxml2-dev -y
 
+INSTALLERFILE=Plone-5.0-UnifiedInstaller-r1.tgz
+INSTALLERFOLDER=Plone-5.0-UnifiedInstaller-r1
+INSTALLERURL=https://launchpad.net/plone/5.0/5.0/+download/Plone-5.0-UnifiedInstaller-r1.tgz
+
 spinner()
 {
     local pid=$1
@@ -17,10 +21,17 @@ spinner()
 }
 
 echo "getting the installer"
-wget https://launchpad.net/plone/5.0/5.0/+download/Plone-5.0-UnifiedInstaller-r1.tgz
+if [ -s $INSTALLERFILE ]  
+then  
+    echo "----> We already have the installer file"
+else  
+    echo "----> Downloading the installer file"
+    wget $INSTALLERURL
+fi
 echo "unpacking the installer"
-tar xfz Plone-5.0-UnifiedInstaller-r1.tgz
-cd Plone-5.0-UnifiedInstaller-r1
+tar xfz $INSTALLERFILE
+cd $INSTALLERFOLDER
+
 
 echo "installing (first pass)"
 ./install.sh standalone --target=$HOME/workspace &
