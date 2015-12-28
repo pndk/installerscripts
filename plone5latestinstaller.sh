@@ -17,9 +17,9 @@ spinner()
 }
 
 echo "getting the installer"
-wget https://launchpad.net/plone/5.0/5.0/+download/Plone-5.0-UnifiedInstaller.tgz
+wget https://launchpad.net/plone/5.0/5.0/+download/Plone-5.0-UnifiedInstaller-r1.tgz
 echo "unpacking the installer"
-tar xfz Plone-5.0-UnifiedInstaller.tgz
+tar xfz Plone-5.0-UnifiedInstaller-r1.tgz
 cd Plone-5.0-UnifiedInstaller
 
 echo "installing (first pass)"
