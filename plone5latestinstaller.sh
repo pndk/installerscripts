@@ -37,7 +37,9 @@ echo "installing (first pass)"
 ./install.sh standalone --target=$HOME/workspace &
 spinner $!
 
-
+echo "----> Adding a buildout defaults.cfg file"
+mkdir -p $HOME/.buildout/
+wget https://raw.githubusercontent.com/pndk/installerscripts/master/c9.buildout.defaults.cfg -O $HOME/.buildout/defaults.cfg
 echo "***********************************"
 echo "**                               **"
 echo "** Plone install complete        **"
