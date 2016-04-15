@@ -1,9 +1,9 @@
 # spinner borrowed from http://fitnr.com/showing-a-bash-spinner.html
 sudo apt-get install libxslt-dev libxml2-dev -y
 
-INSTALLERFILE=Plone-5.0-UnifiedInstaller-r1.tgz
-INSTALLERFOLDER=Plone-5.0-UnifiedInstaller-r1
-INSTALLERURL=https://launchpad.net/plone/5.0/5.0/+download/Plone-5.0-UnifiedInstaller-r1.tgz
+INSTALLERFILE=Plone-5.0.4-UnifiedInstaller.tgz
+INSTALLERFOLDER=Plone-5.0.4-UnifiedInstaller
+INSTALLERURL=https://launchpad.net/plone/5.0/5.0.4/+download/Plone-5.0.4-UnifiedInstaller.tgz
 
 spinner()
 {
