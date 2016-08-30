@@ -5,6 +5,16 @@ INSTALLERFILE=Plone-5.0.5-UnifiedInstaller.tgz
 INSTALLERFOLDER=Plone-5.0.5-UnifiedInstaller
 INSTALLERURL=https://launchpad.net/plone/5.0/5.0.5/+download/Plone-5.0.5-UnifiedInstaller.tgz
 
+if [ -z ${C9_USER+x} ]; then
+     echo "This is not a C9 based install, this doesn't always work";
+     BUILDOUTDIR=$HOME/plone
+else
+     echo "This is a C9 install. Hi '$C9_USER'";
+     BUILDOUTDIR=$HOME/workspace
+fi
+echo "Your buildout directory will be $BUILDOUTDIR"
+
+
 spinner()
 {
     local pid=$1
@@ -34,24 +44,32 @@ cd $INSTALLERFOLDER
 
 
 echo "installing (first pass)"
-./install.sh standalone --target=$HOME/workspace &
+./install.sh standalone --target=$BUILDOUTDIR &
 spinner $!
 
 echo "----> Adding a buildout default.cfg file"
 mkdir -p $HOME/.buildout/
-wget https://raw.githubusercontent.com/pndk/installerscripts/master/c9.buildout.defaults.cfg -O $HOME/.buildout/default.cfg
-mkdir -p $HOME/workspace/buildout-cache/extends
+cat > $HOME/.buildout/default.cfg << EOF
+[buildout]
+eggs-directory = $BUILDOUTDIR/buildout-cache/eggs
+download-cache = $BUILDOUTDIR/buildout-cache/downloads
+extends-cache = $BUILDOUTDIR/buildout-cache/extends
+# keep buildout's connection timeout low to speed buildout runs
+socket-timeout = 3
+EOF
+
+mkdir -p $BUILDOUTDIR/buildout-cache/extends
 echo "***********************************"
 echo "**                               **"
-echo "** Plone install complete        **"
+echo "**  Plone install complete       **"
 echo "**                               **"
-echo "** the commands will not work in **"
-echo "**  this console. Close this     **"
-echo "**  terminal                     **"
+echo "**  the commands will not work   **"
+echo "**  in this console. Close       **"
+echo "**  this terminal                **"
 echo "**  in a newly opened terminal   **"
 echo "**  then and run:                **"
 echo "**                               **"
-echo "**     cd zinstance              **"
-echo "**     bin/instance fg           **"
+echo "**    cd $BUILDOUTDIR/zinstance  **"
+echo "**    bin/instance fg            **"
 echo "**                               **"
 echo "***********************************"
