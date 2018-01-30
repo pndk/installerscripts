@@ -1,9 +1,8 @@
 # spinner borrowed from http://fitnr.com/showing-a-bash-spinner.html
 sudo apt-get install libxslt-dev libxml2-dev -y
-
-INSTALLERFILE=Plone-5.0.5-UnifiedInstaller.tgz
-INSTALLERFOLDER=Plone-5.0.5-UnifiedInstaller
-INSTALLERURL=https://launchpad.net/plone/5.0/5.0.5/+download/Plone-5.0.5-UnifiedInstaller.tgz
+INSTALLERFILE=Plone-5.1rc2-UnifiedInstaller.tgz
+INSTALLERFOLDER=Plone-5.1rc2-UnifiedInstaller
+INSTALLERURL=https://launchpad.net/plone/5.1/5.1rc2/+download/Plone-5.1rc2-UnifiedInstaller.tgz
 
 if [ -z ${C9_USER+x} ]; then
      echo "This is not a C9 based install, this doesn't always work";
